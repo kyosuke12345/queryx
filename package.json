@@ -1,0 +1,52 @@
+{
+  "name": "queryx",
+  "version": "1.0.0",
+  "description": "Cross-platform SQL client desktop application",
+  "main": "./out/main/index.js",
+  "packageManager": "pnpm@10.9.0",
+  "scripts": {
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
+    "typecheck": "pnpm typecheck:node && pnpm typecheck:web",
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev",
+    "build": "pnpm typecheck && electron-vite build",
+    "postinstall": "electron-builder install-app-deps",
+    "build:win": "pnpm build && electron-builder install-app-deps --platform win32 --arch x64 && electron-builder --win && electron-builder install-app-deps",
+    "build:win:nsis": "pnpm build && electron-builder install-app-deps --platform win32 --arch x64 && electron-builder --win nsis && electron-builder install-app-deps",
+    "build:win:dir": "pnpm build && electron-builder install-app-deps --platform win32 --arch x64 && electron-builder --win --dir && electron-builder install-app-deps",
+    "build:mac": "pnpm build && electron-builder --mac",
+    "build:linux": "pnpm build && electron-builder --linux"
+  },
+  "dependencies": {
+    "@electron-toolkit/preload": "3.0.2",
+    "@electron-toolkit/utils": "4.0.0",
+    "ag-grid-community": "32.3.9",
+    "ag-grid-react": "32.3.9",
+    "better-sqlite3": "12.9.0",
+    "electron-store": "8.2.0",
+    "monaco-editor": "0.55.1",
+    "mysql2": "3.22.3",
+    "pg": "8.20.0",
+    "sql-formatter": "15.7.3",
+    "zustand": "4.5.7"
+  },
+  "devDependencies": {
+    "@electron-toolkit/tsconfig": "2.0.0",
+    "@types/better-sqlite3": "7.6.13",
+    "@types/pg": "8.20.0",
+    "@types/react": "18.3.28",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "4.7.0",
+    "autoprefixer": "10.5.0",
+    "electron": "31.7.7",
+    "electron-builder": "24.13.3",
+    "electron-vite": "5.0.0",
+    "postcss": "8.5.14",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwindcss": "3.4.19",
+    "typescript": "5.9.3",
+    "vite": "7.3.3"
+  }
+}
